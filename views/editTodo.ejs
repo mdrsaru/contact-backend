@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Edit form</title>
+    </head>
+    <body>
+        <form action='/edit' method="post">
+            <input type='text' hidden value='<%= docs?.id%>' name='id'/>
+            Name:<input type= "text" name='name' value="<%= docs?.name%>"/>
+            Deadline:<input type= "date" name='deadline' def="<%= docs?.deadline%>"/>
+            Points:<input type= "number" name='points' value="<%= docs?.points%>"/>
+
+<button type='submit'>Submit</button>
+        </form>
+    </body>
+</html>

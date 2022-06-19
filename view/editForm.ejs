@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Edit form</title>
+    </head>
+    <body>
+        <form action='/user/edit' method="post">
+            <input type='text' value='<%=data.id%>' name='id' hidden/>
+            Name:<input type= "text" name='name' value="<%= data.name%>"/>
+            Deadline:<input type= "date" name='deadline'/>
+            Points:<input type= "number" name='points' value="<%= data.points%>"/>
+
+<button type='submit'>Submit</button>
+        </form>
+    </body>
+</html>
