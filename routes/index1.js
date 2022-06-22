@@ -15,9 +15,9 @@ router.get('/hello', (req, res) => {
   res.render('hello')
 })
 
-router.get('/addTodo', (req, res) => {
-  res.render('addTodo')
-})
+// router.get('/addTodo', (req, res) => {
+//   res.render('addTodo')
+// })
 
 router.get('/fetch', (req, res) => {
   // res.send('This is from fetch route')

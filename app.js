@@ -3,8 +3,10 @@ let express = require ('express')
 let mongoose = require("mongoose");
 let ejs = require('ejs');
 
-let index = require('./routes/index');
+// let index = require('./routes/index');
 let index1 = require ('./routes/index1')
+
+let todoRoute = require('./routes/todoRoute')
 
 let app = express()
 const port = 8081;
@@ -17,7 +19,7 @@ db.once("open", () => {
   console.log("Mogodb is connected sucessfully");
 });
 
-app.use('/',index)
+app.use('/',todoRoute)
 app.use('/user', index1)
 
 app.use(express.static(__dirname + '/public'));
