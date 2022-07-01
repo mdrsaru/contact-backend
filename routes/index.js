@@ -20,17 +20,17 @@ router.get("/todos", function (req, res) {
 
   Todo.find((err, docs) => {
     if (err) {
-      console.log(err, 'err')
+      //console.log(err, 'err')
     }
     else {
-      console.log(docs, 'docs')
+      //console.log(docs, 'docs')
       res.render("showData",{datas:docs})
     }
   })
 });
 
 router.post("/add", (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
 
   let todo = new Todo({
     name: req.body.name,
@@ -40,7 +40,7 @@ router.post("/add", (req, res) => {
 
   var promise = todo.save();
   promise.then((todo) => {
-    console.log("Todo saved");
+    //console.log("Todo saved");
     res.send("todo saved")
   })
 });
@@ -52,20 +52,20 @@ router.get("/getById", function (req, res) {
 
 
     const words = str.split(',');
-    console.log(words);
+    //console.log(words);
     var date = new Date(docs.deadline);
-    // console.log(date.toLocalDateString())
+    // //console.log(date.toLocalDateString())
     let data = date.toISOString().split('T');
-    console.log(data[0])
+    //console.log(data[0])
     const data1 = date.toDateString();
     const data2 = date.toLocaleDateString()
     const data3 = date.toUTCString()
-    console.log(data1,data2,data3)
+    //console.log(data1,data2,data3)
     if (err) {
-      console.log(err, 'err')
+      //console.log(err, 'err')
     }
     else {
-      // console.log(docs,'docs')
+      // //console.log(docs,'docs')
       res.send(docs)
 
     }
@@ -75,68 +75,68 @@ router.get("/getById", function (req, res) {
 
 router.get('/getOne', function (req, res) {
   Todo.findOne({ name: req.body.name }, (err, docs) => {
-    console.log(docs)
+    //console.log(docs)
 
     if (err) {
-      console.log(err)
+      //console.log(err)
     }
     else {
-      console.log(docs, 'docs')
+      //console.log(docs, 'docs')
       res.send(docs)
     }
   })
 })
 router.get('/editTodo/:id',(req,res)=>{
-  console.log(req.params.id)
+  //console.log(req.params.id)
   Todo.findOne({ _id: req.params.id }, (err, docs) => {
-    console.log(docs)
+    //console.log(docs)
 
     if (err) {
-      console.log(err)
+      //console.log(err)
     }
     else {
-      console.log(docs, 'docs')
+      //console.log(docs, 'docs')
       // res.render('editTodo',{docs:docs})
 
     }
   })
 })
 router.post('/edit', (req, res) => {
-  console.log('edit',req.body)
+  //console.log('edit',req.body)
   Todo.findOneAndUpdate(
     { id: req.body.id },
     { $set: { deadline: req.body.deadline } },
     function (err, docs) {
       if (err) {
-        console.log(err)
+        //console.log(err)
       }
       else {
-        console.log(docs);
+        //console.log(docs);
         res.send(docs)
       }
     })
 })
 router.get('/delete/:id', (req, res) => {
-  console.log('delete',req.params)
+  //console.log('delete',req.params)
   Todo.deleteOne({ id: req.params.id }, function (err, docs) {
     if (err) {
-      console.log(err)
+      //console.log(err)
     }
     else {
-      console.log(docs);
+      //console.log(docs);
       res.redirect('/todos')
     }
   })
 })
 
 router.get('/delete', (req, res) => {
-  console.log('delete')
+  //console.log('delete')
   Todo.deleteMany({ name: req.body.name }, function (err, docs) {
     if (err) {
-      console.log(err)
+      //console.log(err)
     }
     else {
-      console.log(docs);
+      //console.log(docs);
       res.send(docs)
     }
   })

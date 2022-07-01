@@ -4,15 +4,17 @@ let mongoose = require("mongoose");
 let ejs = require('ejs');
 
 // let index = require('./routes/index');
-let index1 = require ('./routes/index1')
+let userRoute = require ('./routes/userRoute')
 
 let todoRoute = require('./routes/todoRoute')
 
 let app = express()
 const port = 8081;
 
-
-mongoose.connect("mongodb://127.0.0.1:27017/Todo-app");
+const options = {
+  autoIndex:true,
+}
+mongoose.connect("mongodb://127.0.0.1:27017/TodoApp",options)
 var db = mongoose.connection;
 
 db.once("open", () => {
@@ -20,7 +22,7 @@ db.once("open", () => {
 });
 
 app.use('/',todoRoute)
-app.use('/user', index1)
+app.use('/user', userRoute)
 
 app.use(express.static(__dirname + '/public'));
 
@@ -35,7 +37,7 @@ app.set('view engine','ejs')
 
 
 app.listen(port, () => {
-  console.log(`Listening to port ${port}`);
+  //console.log(`Listening to port ${port}`);
 });
 
 module.exports = app;
